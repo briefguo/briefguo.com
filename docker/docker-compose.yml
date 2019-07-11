@@ -1,9 +1,9 @@
 version: '3.1'
 
 services:
-  lex-nginx:
+  nginx:
     image: nginx:latest
-    container_name: lex-nginx
+    container_name: nginx
     volumes:
       - ./nginx/certs:/etc/nginx/certs
       - ./nginx/conf.d:/etc/nginx/conf.d
@@ -23,7 +23,7 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=3000
-      - SUNMI_PROD_URL=https://briefguo
+      - SUNMI_PROD_URL=https://briefguo.com
       - SUNMI_ENV=master
       - BUILD_TAG
     ports:

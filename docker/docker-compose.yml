@@ -1,0 +1,30 @@
+version: '3.1'
+
+services:
+  lex-nginx:
+    image: nginx:latest
+    container_name: lex-nginx
+    volumes:
+      - ./nginx/certs:/etc/nginx/certs
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/html:/usr/share/nginx/html
+    links:
+      - node
+    depends_on:
+      - node
+    ports:
+      - 80:80
+      - 443:443
+
+  node:
+    container_name: node
+    image: briefguo/briefguo:latest
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - SUNMI_PROD_URL=https://briefguo
+      - SUNMI_ENV=master
+      - BUILD_TAG
+    ports:
+      - '3000:3000'

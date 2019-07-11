@@ -1,0 +1,9 @@
+node_modules
+build
+.next
+dist
+**.log
+.DS_Store
+build
+**/**.js.map
+temp

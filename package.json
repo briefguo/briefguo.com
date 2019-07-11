@@ -1,0 +1,24 @@
+{
+  "name": "briefguo.com",
+  "version": "1.0.0",
+  "description": "guoyongjie",
+  "main": "pages/index.tsx",
+  "repository": "git@github.com:briefguo/briefguo.com.git",
+  "author": "briefguo <gyj9094@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build:master": "npx next build",
+    "start:dev": "next dev"
+  },
+  "dependencies": {
+    "next": "^9.0.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@types/node": "^12.6.2",
+    "@types/react": "^16.8.23",
+    "typescript": "^3.5.3"
+  }
+}

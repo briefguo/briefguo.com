@@ -1,0 +1,43 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run: npx yarn
+      - run: npm run build:master
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker build --tag briefguo/briefguo:latest .
+      - run: docker push briefguo/briefguo:latest
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - 'd2:e2:45:e4:5a:71:25:56:67:19:e1:d1:ee:3f:c3:29'
+      - run:
+          name: Copy Files
+          command: |
+            scp -r docker/** $SSH_USER@$SSH_HOST:/root/docker
+      - run:
+          name: Deploy Over SSH
+          command: |
+            ssh $SSH_USER@$SSH_HOST "cd /root/docker && docker-compose down && docker-compose up -d"
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master

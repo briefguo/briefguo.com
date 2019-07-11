@@ -4,9 +4,12 @@ import XLSX from "xlsx";
 export default () => {
   const [detail, setDetail] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [city, setCity] = useState("");
   const getDetail = async () => {
     setLoading(true);
-    const result = await fetch(`/api/pois`).then(res => res.json());
+    const result = await fetch(`/api/pois?city=${encodeURIComponent(city)}`).then(res =>
+      res.json()
+    );
     setDetail(result);
     setLoading(false);
   };
@@ -18,7 +21,15 @@ export default () => {
   return (
     <div>
       <div>
-        <button onClick={getDetail}>获取</button>
+        <input
+          value={city}
+          onChange={e => setCity(e.target.value)}
+          type="text"
+          placeholder="输入城市"
+        />
+        <button disabled={!city} onClick={getDetail}>
+          获取
+        </button>
         <button disabled={detail.length === 0} onClick={exportExcel}>
           导出Excel
         </button>

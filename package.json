@@ -9,7 +9,8 @@
   "private": true,
   "scripts": {
     "build:master": "npx next build",
-    "start:dev": "next dev"
+    "start:dev": "next dev",
+    "start": "next"
   },
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",

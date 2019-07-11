@@ -1,4 +1,4 @@
-version: '3.1'
+version: "3.1"
 
 services:
   nginx:
@@ -10,15 +10,15 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/html:/usr/share/nginx/html
     links:
-      - node
+      - app-node
     depends_on:
-      - node
+      - app-node
     ports:
       - 80:80
       - 443:443
 
-  node:
-    container_name: node
+  app-node:
+    container_name: app-node
     image: briefguo/briefguo:latest
     environment:
       - NODE_ENV=production
@@ -27,4 +27,4 @@ services:
       - SUNMI_ENV=master
       - BUILD_TAG
     ports:
-      - '3000:3000'
+      - "3000:3000"

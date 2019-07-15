@@ -4,7 +4,7 @@ import { local } from '@/helpers/fetch';
 import { useRouter } from 'next/router';
 import { AnchorButton, ProgressBar } from '@blueprintjs/core';
 
-export default () => {
+export default (props: any) => {
   const router = useRouter();
   const citycode = router.query.citycode;
   const { value, loading } = useAsync(() => local.get(`/api/task/${citycode}`));

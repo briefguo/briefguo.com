@@ -1,8 +1,7 @@
-import XLSX from 'xlsx';
 import { createPageProps, compose, usePageProps } from '@/core/next-compose';
-import { getConfigDistrict } from 'pages/index';
-import { Distrct } from 'pages/index/interfaces/distrct';
+import { Distrct, DistrctResponse } from '@/api/amap/interfaces/distrct';
 import { local } from '@/helpers/fetch';
+import { amap } from '@/api/amap';
 
 const pageProps = [
   createPageProps(ctx => ({ adcode: ctx.query.adcode })),
@@ -10,8 +9,11 @@ const pageProps = [
     detail: await local.get(`/api/pois/${ctx.query.adcode}`),
   })),
   createPageProps(async ctx => ({
-    districts: (await getConfigDistrict({ keywords: ctx.query.adcode }))
-      .districts[0].districts,
+    districts: (await amap.get<DistrctResponse>('/config/district', {
+      keywords: ctx.query.adcode,
+      subdistrict: 1,
+      extensions: 'base',
+    })).districts[0].districts,
   })),
 ];
 
@@ -24,22 +26,6 @@ interface PageProps {
 
 export default compose(pageProps)(() => {
   const { districts, detail } = usePageProps<PageProps>();
-
-  // 开启任务
-  const run = async () => {
-    return Promise.all(
-      districts.map(d => local.get('/api/task', { city: d.adcode })),
-    );
-  };
-
-  const exportExcel = () => {
-    var tbl = document.getElementById('sheetjs');
-    var wb = XLSX.utils.table_to_book(tbl);
-    XLSX.writeFile(wb, 'out.xlsx');
-  };
-
-  // const { value, loading } = useAsync(run);
-  // console.log(value);
 
   return (
     <div>

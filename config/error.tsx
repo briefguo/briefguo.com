@@ -1,6 +1,18 @@
-import ErrorRoute from '../pages/expections';
 import React from 'react';
 import { logger } from '@/core/logger';
+import Error403 from '@/pages/expections/403';
+import Error404 from '@/pages/expections/404';
+import Error500 from '@/pages/expections/500';
+import Error503 from '@/pages/expections/503';
+
+// ErrorRoute
+// 只要错误码 添加进来， 就会被catch到
+const ErrorRoute = {
+  403: Error403,
+  404: Error404,
+  500: Error500,
+  503: Error503,
+};
 
 export const CATCHED_CODE = Object.keys(ErrorRoute).map(Number);
 export type CatchedCode = keyof typeof ErrorRoute;

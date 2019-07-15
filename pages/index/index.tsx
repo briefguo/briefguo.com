@@ -1,16 +1,9 @@
-import {
-  InputGroup,
-  Tag,
-  H4,
-  AnchorButton,
-  ButtonGroup,
-  Spinner,
-} from '@blueprintjs/core';
+import { InputGroup, Tag, AnchorButton, Spinner } from '@blueprintjs/core';
 import React from 'react';
 import { Page } from '@/core/page';
 import { usePageProps, compose } from '@/core/next-compose';
 import { local } from '@/helpers/fetch';
-import { DistrctResponse } from './interfaces/distrct';
+import { DistrctResponse } from '@/api/amap/interfaces/distrct';
 import { amap } from '@/api/amap';
 import { map, debounce, filter } from 'rxjs/operators';
 import { useEventCallback } from 'rxjs-hooks';
@@ -18,13 +11,6 @@ import { timer } from 'rxjs';
 import { useAsync } from 'react-use';
 import styled from 'styled-components';
 import { Flex } from '@/core/layout/flex';
-
-export const getConfigDistrict = async ({ keywords }: any) =>
-  await amap.get<DistrctResponse>('/config/district', {
-    keywords,
-    subdistrict: 1,
-    extensions: 'base',
-  });
 
 const DistrctList = styled.div`
   /* width: 500px; */
@@ -52,9 +38,15 @@ export default compose(pageProps)(() => {
       ),
     '',
   );
-  const { value, loading } = useAsync(() => getConfigDistrict({ keywords }), [
-    keywords,
-  ]);
+  const { value, loading } = useAsync(
+    () =>
+      amap.get<DistrctResponse>('/config/district', {
+        keywords,
+        subdistrict: 1,
+        extensions: 'base',
+      }),
+    [keywords],
+  );
   return (
     <Page>
       <Page.Container>

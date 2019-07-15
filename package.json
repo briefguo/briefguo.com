@@ -10,7 +10,7 @@
   "scripts": {
     "predatabase": "docker-compose -f ./docker/docker-compose.database.yml down --remove-orphans",
     "database": "docker-compose -f ./docker/docker-compose.database.yml up -d --remove-orphans",
-    "build:master": "npx next build",
+    "build:master": "SUNMI_PROD_URL=https://briefguo.com npx next build",
     "server": "npx ts-node --project tsconfig.server.json --require tsconfig-paths/register --require reflect-metadata server/main.ts",
     "start:server": "npx nodemon",
     "start:dev": "npx next dev",

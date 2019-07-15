@@ -14,7 +14,7 @@
     "server": "npx ts-node --project tsconfig.server.json --require tsconfig-paths/register --require reflect-metadata server/main.ts",
     "start:server": "npx nodemon",
     "start:dev": "npx next dev",
-    "start": "npx next"
+    "start": "npx next start"
   },
   "dependencies": {
     "@blueprintjs/core": "^3.17.1",

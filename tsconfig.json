@@ -5,13 +5,12 @@
     "removeComments": true,
     "strict": true,
     "alwaysStrict": true,
-    "types": [
-      "react",
-      "node"
-    ],
-    "typeRoots": [
-      "node_modules/@types"
-    ],
+    "types": ["react", "node"],
+    "typeRoots": ["node_modules/@types"],
+    "paths": {
+      "@/api/*": ["pages/api/*"],
+      "@/*": ["./*"]
+    },
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "strictPropertyInitialization": false,
@@ -26,21 +25,11 @@
     "sourceMap": false,
     "outDir": "build",
     "baseUrl": ".",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
     "skipLibCheck": true,
-    "noEmit": true
+    "noEmit": true,
+    "allowJs": true
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  "exclude": ["node_modules"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }

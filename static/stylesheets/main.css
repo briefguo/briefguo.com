@@ -1,0 +1,8 @@
+@import 'https://unpkg.com/normalize.css@8.0.0/normalize.css';
+@import 'https://unpkg.com/@blueprintjs/icons@3.9.1/lib/css/blueprint-icons.css';
+@import 'https://unpkg.com/@blueprintjs/core@3.17.1/lib/css/blueprint.css';
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}

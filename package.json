@@ -8,27 +8,149 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "predatabase": "docker-compose -f ./docker/docker-compose.database.yml down --remove-orphans",
+    "database": "docker-compose -f ./docker/docker-compose.database.yml up -d --remove-orphans",
     "build:master": "npx next build",
-    "start:dev": "next dev",
-    "start": "next"
+    "server": "npx ts-node --project tsconfig.server.json --require tsconfig-paths/register --require reflect-metadata server/main.ts",
+    "start:server": "npx nodemon",
+    "start:dev": "npx next dev",
+    "start": "npx next"
   },
   "dependencies": {
+    "@blueprintjs/core": "^3.17.1",
+    "@nestjs/common": "^6.5.2",
+    "@nestjs/core": "^6.5.2",
+    "@nestjs/platform-express": "^6.5.2",
+    "body-parser": "^1.19.0",
+    "cache-manager": "^2.10.0",
+    "class-transformer": "^0.2.3",
+    "class-validator": "^0.9.1",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.0.0",
+    "helmet": "^3.18.0",
     "isomorphic-fetch": "^2.2.1",
     "keyboardjs": "^2.5.1",
+    "lodash": "^4.17.14",
+    "md5": "^2.2.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.6.4",
     "next": "^9.0.0",
+    "qs": "^6.7.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-use": "^9.10.0",
     "rebound": "^0.1.0",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^6.5.2",
+    "rxjs-hooks": "^0.5.1",
+    "styled-components": "^4.3.2",
+    "universal-cookie": "^4.0.2",
     "xlsx": "^0.14.3"
   },
   "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-decorators": "^7.4.4",
+    "@types/body-parser": "^1.17.0",
+    "@types/crypto-js": "^3.1.43",
+    "@types/express-rate-limit": "^3.3.0",
+    "@types/helmet": "^0.0.43",
     "@types/isomorphic-fetch": "^0.0.35",
+    "@types/lodash": "^4.14.136",
+    "@types/md5": "^2.1.33",
+    "@types/mongoose": "^5.5.8",
+    "@types/next": "^8.0.6",
     "@types/node": "^12.6.2",
+    "@types/qs": "^6.5.3",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
+    "@types/styled-components": "^4.1.18",
+    "@types/universal-cookie": "^2.2.0",
+    "babel-plugin-import": "^1.11.0",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "babel-plugin-styled-components": "^1.10.0",
+    "nodemon": "^1.19.1",
     "ts-node": "^8.3.0",
     "tsconfig-paths": "^3.8.0",
     "typescript": "^3.5.3"
+  },
+  "babel": {
+    "presets": [
+      "next/babel"
+    ],
+    "plugins": [
+      [
+        "styled-components",
+        {
+          "ssr": true,
+          "displayName": true,
+          "preprocess": false
+        }
+      ],
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ],
+      [
+        "import",
+        {
+          "libraryName": "lodash",
+          "libraryDirectory": "",
+          "camel2DashComponentName": false
+        },
+        "lodash"
+      ],
+      [
+        "import",
+        {
+          "libraryName": "react-use",
+          "libraryDirectory": "lib",
+          "camel2DashComponentName": false
+        },
+        "react-use"
+      ],
+      [
+        "module-resolver",
+        {
+          "root": [
+            "./"
+          ],
+          "alias": {
+            "@/api": "./pages/api",
+            "@": "./"
+          },
+          "extensions": [
+            ".ts",
+            ".tsx"
+          ]
+        }
+      ]
+    ]
+  },
+  "nodemonConfig": {
+    "watch": [
+      "server",
+      "config"
+    ],
+    "verbose": false,
+    "debug": false,
+    "delay": "2500",
+    "ext": "ts",
+    "exec": "npm run server",
+    "ignore": [
+      "node_modules",
+      "**/*.d.ts",
+      "*.test.ts",
+      "*.spec.ts"
+    ],
+    "inspect": false
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "semi": true
   }
 }

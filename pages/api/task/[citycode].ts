@@ -51,7 +51,6 @@ const getPoi = async ({ types, citycode }: any) => {
 const savePoi = async (query: any, filename: string) => {
   const { poi, getRest } = await getPoi(query);
   const rest = await getRest();
-  console.log(poi);
   const pois = poi.pois && poi.pois.concat(rest);
   poi.pois && fs.writeFileSync(filename, JSON.stringify(pois));
 };
@@ -75,7 +74,6 @@ const getFullPoi = async (query: any) => {
 };
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  console.log(req.query);
   const getCatalogPoi = (catalog: Catalog) =>
     getFullPoi({ ...req.query, types: catalog.NEW_TYPE });
   if (!fs.existsSync('./temp')) {

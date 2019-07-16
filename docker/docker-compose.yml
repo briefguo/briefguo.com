@@ -1,4 +1,4 @@
-version: "3.1"
+version: '3.1'
 
 services:
   nginx:
@@ -20,6 +20,9 @@ services:
   app-node:
     container_name: app-node
     image: briefguo/briefguo:latest
+    # 数据缓存
+    volumes:
+      - ./temp/certs:/app/temp
     environment:
       - NODE_ENV=production
       - PORT=3000
@@ -27,4 +30,4 @@ services:
       - SUNMI_ENV=master
       - BUILD_TAG
     ports:
-      - "3000:3000"
+      - '3000:3000'

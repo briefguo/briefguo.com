@@ -2,11 +2,13 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { readFileSync } from 'fs';
 import { getCatalogs } from '@/api/amap/catalogs';
 import XLSX from 'xlsx';
-import { at } from 'lodash';
+import { at, keyBy } from 'lodash';
 
 const locales: any = {
   name: '名称',
-  type: '类型',
+  'type.first': '大类',
+  'type.second': '中类',
+  'type.third': '小类',
   pname: '省',
   cityname: '市',
   adname: '区',
@@ -41,7 +43,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const city = req.query.adcode as string;
   for (const catalog of getCatalogs()) {
     const json = readFileSync(
-      `./temp/json/pois/${city}/${catalog.NEW_TYPE}.json`,
+      `./temp/${city}/${catalog.NEW_TYPE}.json`,
       'utf-8',
     );
     arr.push(...JSON.parse(json));
@@ -52,18 +54,31 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
   );
   res.send(
-    toExcel(arr, i => ({ ...i }), [
-      'name',
-      'type',
-      'pname',
-      'cityname',
-      'adname',
-      'address',
-      'tel',
-      'business_area',
-      'indoor_data.floor',
-      'indoor_data.truefloor',
-      'biz_ext.cost',
-    ]),
+    toExcel(
+      arr,
+      (i: any) => ({
+        ...i,
+        type: {
+          first: i.type.split(';')[0],
+          second: i.type.split(';')[1],
+          third: i.type.split(';')[2],
+        },
+      }),
+      [
+        'name',
+        'type.first',
+        'type.second',
+        'type.third',
+        'pname',
+        'cityname',
+        'adname',
+        'address',
+        'tel',
+        'business_area',
+        'indoor_data.floor',
+        'indoor_data.truefloor',
+        'biz_ext.cost',
+      ],
+    ),
   );
 };

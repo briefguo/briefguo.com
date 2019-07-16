@@ -58,7 +58,7 @@ const savePoi = async (query: any, filename: string) => {
 
 const getFullPoi = async (query: any) => {
   const { types, citycode } = query;
-  const dir = `./temp/json/pois/${citycode}`;
+  const dir = `./temp/${citycode}`;
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
   }
@@ -75,13 +75,13 @@ const getFullPoi = async (query: any) => {
 };
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  // console.log(req.query);
-  // const getCatalogPoi = (catalog: Catalog) =>
-  //   getFullPoi({ ...req.query, types: catalog.NEW_TYPE });
-  // for (const catalog of catalogs) {
-  //   const index = catalogs.findIndex(c => c.NEW_TYPE === catalog.NEW_TYPE);
-  //   console.log(`${index + 1}/${catalogs.length}`);
-  //   await getCatalogPoi(catalog);
-  // }
+  console.log(req.query);
+  const getCatalogPoi = (catalog: Catalog) =>
+    getFullPoi({ ...req.query, types: catalog.NEW_TYPE });
+  for (const catalog of catalogs) {
+    const index = catalogs.findIndex(c => c.NEW_TYPE === catalog.NEW_TYPE);
+    console.log(`${index + 1}/${catalogs.length}`);
+    await getCatalogPoi(catalog);
+  }
   res.send('ok');
 };

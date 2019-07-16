@@ -6,6 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import { lexTheme } from '@/config/theme/theme';
 import { composePageProps, PagePropsContext } from '@/core/next-compose';
 import { enhancedCtx } from '@/helpers/page-props';
+import { logger } from '@/core/logger';
 
 type Props = AppProps<any> & { statusCode: any };
 
@@ -17,6 +18,7 @@ const initialAppProps = enhancedCtx(async ({ Component, ctx }) => {
     try {
       pageProps = await Component.getInitialProps(ctx);
     } catch (error) {
+      logger.error(error);
       // FetchError
       statusCode = error.code || 500;
     }

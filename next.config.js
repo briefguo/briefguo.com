@@ -13,6 +13,6 @@ const config = {
 };
 
 // README: next-typescript 始终格式化成 ['ts','tsx']
-config.pageExtensions = ['tsx'];
+// config.pageExtensions = ['tsx'];
 
 module.exports = config;

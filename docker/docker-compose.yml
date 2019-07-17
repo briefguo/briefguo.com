@@ -22,7 +22,7 @@ services:
     image: briefguo/briefguo:latest
     # 数据缓存
     volumes:
-      - ./temp/certs:/app/temp
+      - ./temp:/app/temp
     environment:
       - NODE_ENV=production
       - PORT=3000

@@ -5,7 +5,8 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Run a one-line script
         run: echo Hello, world!
+        run: npm -v
+        run: node -v

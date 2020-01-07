@@ -5,8 +5,10 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Run a one-line script
-        run: echo Hello, world!
-        run: npm -v
-        run: node -v
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          npm -v
+          node -v

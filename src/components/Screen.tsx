@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 
-const Screen = styled.div`
+interface ScreenProps {
+  justify?: 'center' | 'flex-start';
+  align?: 'center' | 'flex-start';
+}
+
+const Screen = styled.div<ScreenProps>`
   height: calc(100vh - 64px);
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: ${props => props.justify || 'center'};
+  align-items: ${props => props.align || 'center'};
   flex-direction: column;
 `;
 

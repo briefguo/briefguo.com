@@ -4,6 +4,7 @@ import PageContainer from '~components/PageContainer';
 import Screen from '~components/Screen';
 import logo from '~assets/briefguo.png';
 import styled from 'styled-components';
+import Body from '~components/Body';
 
 const CircleImage = styled.img`
   border-radius: 50%;
@@ -31,8 +32,8 @@ export default () => {
       <Screen>
         <CircleImage width="150px" src={logo} alt="" />
         <Name>郭永杰</Name>
-        <Title>前端开发者</Title>
-        <Description>这是一段描述</Description>
+        <Title>前端开发</Title>
+        <Description>有问必答不知道</Description>
         {/* https://www.zhihu.com/people/guo-yong-jie-48/activities */}
         {/* 喜欢的游戏 */}
         {/* https://steamcommunity.com/profiles/76561198304706081 */}

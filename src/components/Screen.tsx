@@ -11,7 +11,6 @@ const Screen = styled.div<ScreenProps>`
   justify-content: ${props => props.justify || 'center'};
   align-items: ${props => props.align || 'center'};
   flex-direction: column;
-  padding-inline-start: 40px;
 `
 
 export default Screen

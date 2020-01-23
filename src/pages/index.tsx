@@ -30,7 +30,7 @@ const Description = styled.p`
 
 export default () => {
   return (
-    <PageContainer backgroundColor="#f3f4f5">
+    <PageContainer backgroundImage="linear-gradient(#eee, #f4f5f6)">
       <Header />
       <Screen>
         <CircleImage width="150px" src={briefguoPng} alt="" />

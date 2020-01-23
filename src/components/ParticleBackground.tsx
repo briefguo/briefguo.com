@@ -151,6 +151,7 @@ const MyCanvas = styled.canvas`
   position: absolute;
   z-index: -1;
   top: 0;
+  filter: blur(4px);
 `
 
 const ParticleBackground = () => {

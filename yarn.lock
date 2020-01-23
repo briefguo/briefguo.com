@@ -772,6 +772,11 @@
     "@parcel/utils" "^1.11.0"
     physical-cpu-count "^2.0.0"
 
+"@types/classnames@^2.2.9":
+  version "2.2.9"
+  resolved "https://registry.npm.taobao.org/@types/classnames/download/@types/classnames-2.2.9.tgz#d868b6febb02666330410fe7f58f3c4b8258be7b"
+  integrity sha1-2Gi2/rsCZmMwQQ/n9Y88S4JYvns=
+
 "@types/history@*":
   version "4.7.3"
   resolved "https://registry.npm.taobao.org/@types/history/download/@types/history-4.7.3.tgz#856c99cdc1551d22c22b18b5402719affec9839a"
@@ -1398,6 +1403,11 @@ class-utils@^0.3.5:
     define-property "^0.2.5"
     isobject "^3.0.0"
     static-extend "^0.1.1"
+
+classnames@^2.2.6:
+  version "2.2.6"
+  resolved "https://registry.npm.taobao.org/classnames/download/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
+  integrity sha1-Q5Nb/90pHzJtrQogUwmzjQD2UM4=
 
 cli-cursor@^2.1.0:
   version "2.1.0"
@@ -2409,6 +2419,11 @@ grapheme-breaker@^0.3.2:
   dependencies:
     brfs "^1.2.0"
     unicode-trie "^0.3.1"
+
+gsap@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.npm.taobao.org/gsap/download/gsap-3.0.5.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fgsap%2Fdownload%2Fgsap-3.0.5.tgz#49075d3377e9f43da29ec9853134b6a6274aefe3"
+  integrity sha1-SQddM3fp9D2insmFMTS2pidK7+M=
 
 gud@^1.0.0:
   version "1.0.0"

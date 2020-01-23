@@ -1,12 +1,9 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Loading from '~components/Loading';
 
 const Index = React.lazy(() => import('./pages/index'));
-
-const Loading = () => {
-  return <div>loading...</div>;
-};
 
 const BriefguoApp = () => {
   return (

@@ -1,16 +1,16 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 interface StyledFlexProps {
-  align?: 'flex-start' | 'center' | 'flex-end';
+  align?: 'flex-start' | 'center' | 'flex-end'
   justify?:
     | 'flex-end'
     | 'center'
     | 'flex-start'
     | 'space-between'
-    | 'space-around';
-  gutter?: number;
-  direction?: 'row' | 'column';
-  wrap?: 'wrap' | 'nowrap';
+    | 'space-around'
+  gutter?: number
+  direction?: 'row' | 'column'
+  wrap?: 'wrap' | 'nowrap'
 }
 
 const StyledFlex = styled.div<StyledFlexProps>`
@@ -23,7 +23,7 @@ const StyledFlex = styled.div<StyledFlexProps>`
   & > * {
     margin: ${props => (props.gutter ? `0 ${props.gutter / 2}px` : '')};
   }
-`;
+`
 
 export const Flex = Object.assign(StyledFlex, {
   Auto: styled.div`
@@ -35,4 +35,4 @@ export const Flex = Object.assign(StyledFlex, {
   SpaceBetween: styled(StyledFlex)`
     justify-content: space-between;
   `,
-});
+})

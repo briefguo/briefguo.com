@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 interface ScreenProps {
-  justify?: 'center' | 'flex-start';
-  align?: 'center' | 'flex-start';
+  justify?: 'center' | 'flex-start'
+  align?: 'center' | 'flex-start'
 }
 
 const Screen = styled.div<ScreenProps>`
@@ -11,6 +11,7 @@ const Screen = styled.div<ScreenProps>`
   justify-content: ${props => props.justify || 'center'};
   align-items: ${props => props.align || 'center'};
   flex-direction: column;
-`;
+  padding-inline-start: 40px;
+`
 
-export default Screen;
+export default Screen

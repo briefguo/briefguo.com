@@ -34,5 +34,9 @@ jobs:
           endpoint: oss-cn-shanghai.aliyuncs.com
           access-key-id: ${{ secrets.OSS_KEY_ID }}
           access-key-secret: ${{ secrets.OSS_KEY_SECRET }}
+      - name: rm exsit files
+        run: ossutil rm oss://briefguo/www
       - name: cp files to aliyun
-        run: ossutil cp -rf build oss://briefguo/
+        run: ossutil cp -rf build oss://briefguo/www
+      - name: cp files to aliyun
+        run: ossutil cp -rf build/index.html oss://briefguo/

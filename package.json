@@ -9,7 +9,7 @@
   "private": true,
   "scripts": {
     "prebuild": "rm -rf build",
-    "build": "parcel build src/index.html -d build",
+    "build": "parcel build src/index.html -d build --public-url ./www",
     "prettier": "prettier --write --parser typescript \"src/**/*.ts\"",
     "dev": "parcel src/index.html -d build",
     "start": "npx pushstate-server ./build"

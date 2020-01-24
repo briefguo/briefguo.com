@@ -4,7 +4,7 @@ import Screen from '~/components/Screen'
 
 const Loading = () => {
   return (
-    <Screen>
+    <Screen justify="center" align="center" direction="column">
       <img width="100px" src={hoo} alt="" />
     </Screen>
   )

@@ -24,6 +24,7 @@ const NavListItem = styled.li`
   &.navbar__item--active {
     color: #333;
     font-weight: bold;
+    text-decoration: underline;
   }
 `
 
@@ -37,7 +38,11 @@ const NavbarItem: React.FC<NavbarItemProps> = props => {
   const classnames = cx('navbar__item', {
     [`navbar__item--active`]: isActive,
   })
-  const handleClick = () => history.push(props.url)
+
+  const handleClick = () =>
+    props.url.includes('://')
+      ? (window.location.href = props.url)
+      : history.push(props.url)
   return <NavListItem className={classnames} {...props} onClick={handleClick} />
 }
 
@@ -45,20 +50,19 @@ const Navbar = styled.ul`
   list-style: none;
   display: flex;
   margin: 0 -10px;
+  width: 996px;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 const HeaderContainer = styled(Flex)`
   height: 64px;
-  [name='more'] {
-    display: none;
-  }
   @media (max-width: 768px) {
-    /* 平板 */
     .navbar {
       display: none;
-    }
-    [name='more'] {
-      display: flex;
     }
   }
 `
@@ -71,7 +75,9 @@ const Header = () => {
         <NavbarItem url="/projects">项目</NavbarItem>
         <NavbarItem url="/about">关于</NavbarItem>
         <NavbarItem url="/contact">联系</NavbarItem>
-        <NavbarItem url="/blog">博客</NavbarItem>
+        <NavbarItem url="https://www.zhihu.com/people/guo-yong-jie-48/posts">
+          博客
+        </NavbarItem>
       </Navbar>
     </HeaderContainer>
   )

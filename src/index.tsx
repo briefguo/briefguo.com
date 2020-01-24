@@ -7,7 +7,6 @@ import ParticleBackground from './components/ParticleBackground'
 const Index = React.lazy(() => import('./pages/index'))
 const Projects = React.lazy(() => import('./pages/projects'))
 const About = React.lazy(() => import('./pages/about'))
-const Blog = React.lazy(() => import('./pages/blog'))
 const Contact = React.lazy(() => import('./pages/contact'))
 
 const BriefguoApp = () => {
@@ -18,10 +17,8 @@ const BriefguoApp = () => {
           <Route exact path="/" component={Index}></Route>
           <Route path="/projects" component={Projects}></Route>
           <Route path="/about" component={About}></Route>
-          <Route path="/blog" component={Blog}></Route>
           <Route path="/contact" component={Contact}></Route>
         </Switch>
-        <ParticleBackground></ParticleBackground>
       </BrowserRouter>
     </Suspense>
   )

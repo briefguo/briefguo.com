@@ -1,8 +1,9 @@
 import React from 'react'
 import Screen from '~/components/Screen'
 import styled from 'styled-components'
-import PageContainer from '~/components/PageContainer'
+import Page from '~/components/Page'
 import Header from '~/components/Header'
+import ParticleBackground from '~/components/ParticleBackground'
 
 import briefguoPng from '../assets/briefguo.png'
 
@@ -30,19 +31,17 @@ const Description = styled.p`
 
 export default () => {
   return (
-    <PageContainer backgroundImage="linear-gradient(#eee, #f4f5f6)">
+    <Page backgroundImage="linear-gradient(#eee, #ccc)">
       <Header />
-      <Screen>
+      <Screen justify="center" align="center" direction="column">
         <CircleImage width="150px" src={briefguoPng} alt="" />
-        <Name>郭永杰</Name>
+        <Name>郭永杰(briefguo)</Name>
         <Title>前端开发</Title>
-        <Description>有问必答不知道</Description>
-        {/* https://www.zhihu.com/people/guo-yong-jie-48/activities */}
-        {/* 喜欢的游戏 */}
-        {/* https://steamcommunity.com/profiles/76561198304706081 */}
-        {/* 喜欢的动画 */}
-        {/* https://space.bilibili.com/3058088 */}
+        <Description>
+          🧑🏻‍💻最近专注于小程序开发，再就是为 Pont 贡献代码
+        </Description>
       </Screen>
-    </PageContainer>
+      <ParticleBackground></ParticleBackground>
+    </Page>
   )
 }

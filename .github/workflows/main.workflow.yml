@@ -36,7 +36,7 @@ jobs:
           access-key-secret: ${{ secrets.OSS_KEY_SECRET }}
       - name: rm exsit files
         run: ossutil rm oss://briefguo/www
-      - name: cp files to aliyun
+      - name: cp build files to aliyun
         run: ossutil cp -rf build oss://briefguo/www
-      - name: cp files to aliyun
-        run: ossutil cp -rf build/index.html oss://briefguo/
+      - name: cp index.html to aliyun
+        run: ossutil cp build/index.html oss://briefguo/

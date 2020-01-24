@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 import cx from 'classnames'
 
-const NavListItem = styled.li`
+const NavListItem = styled.a`
   &:hover {
     cursor: pointer;
     color: #333;
@@ -46,7 +46,7 @@ const NavbarItem: React.FC<NavbarItemProps> = props => {
   return <NavListItem className={classnames} {...props} onClick={handleClick} />
 }
 
-const Navbar = styled.ul`
+const Navbar = styled.nav`
   list-style: none;
   display: flex;
   margin: 0 -10px;
@@ -54,11 +54,14 @@ const Navbar = styled.ul`
   margin: 0 auto;
 `
 
-const HeaderContainer = styled(Flex)`
-  height: 64px;
+const HeaderContainer = styled.header`
+  .navbar {
+    height: 64px;
+    display: flex;
+    align-items: center;
+  }
   @media (max-width: 768px) {
     .navbar {
-      display: flex;
       justify-content: center;
       padding-left: 0;
     }
@@ -67,14 +70,14 @@ const HeaderContainer = styled(Flex)`
 
 const Header = () => {
   return (
-    <HeaderContainer align="center" justify="space-between">
+    <HeaderContainer>
       <Navbar className="navbar">
         <NavbarItem url="/">主页</NavbarItem>
         <NavbarItem url="/projects">项目</NavbarItem>
         <NavbarItem url="/about">关于</NavbarItem>
         <NavbarItem url="/contact">联系</NavbarItem>
         <NavbarItem url="https://www.zhihu.com/people/guo-yong-jie-48/posts">
-          博客
+          知乎
         </NavbarItem>
       </Navbar>
     </HeaderContainer>

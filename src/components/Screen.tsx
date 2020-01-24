@@ -7,7 +7,6 @@ const Screen = styled(Flex)`
   .container {
     width: 600px;
   }
-  /*  */
   @media (max-width: 768px) {
     min-height: calc(100vh - 64px - 16px * 2);
     padding: 16px;

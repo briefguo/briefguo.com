@@ -52,6 +52,9 @@ const Navbar = styled.nav`
   margin: 0 -10px;
   width: 996px;
   margin: 0 auto;
+  @media (max-width: 768px) {
+    width: inherit;
+  }
 `
 
 const HeaderContainer = styled.header`

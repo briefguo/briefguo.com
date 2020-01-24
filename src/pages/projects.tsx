@@ -14,6 +14,11 @@ import framework from '../assets/framework.svg'
 import server from '../assets/server.svg'
 import tool from '../assets/tool.svg'
 
+const CategoryDescription = styled.p`
+  color: #4a4a4a;
+  line-height: 1.5em;
+`
+
 const CategoryItem = styled(Flex)`
   margin-bottom: 10px;
   .categoryitem {
@@ -50,37 +55,49 @@ export default () => {
           <h2>项目</h2>
           <CategorySection>
             <CategoryTitle name="小程序" icon={mp} />
-            <div>原生小程序 Wepy Taro实践 Remax实践 代生成小程序</div>
+            <CategoryDescription>
+              原生小程序 Wepy Taro实践 Remax实践 代生成小程序
+            </CategoryDescription>
           </CategorySection>
           <CategorySection>
             <CategoryTitle name="框架及库" icon={framework} />
-            <div>React 状态管理 Nextjs Stenciljs Rails</div>
+            <CategoryDescription>
+              React 状态管理 Nextjs Stenciljs Rails
+            </CategoryDescription>
           </CategorySection>
           <CategorySection>
             <CategoryTitle name="工程及流程化" icon={pipeline} />
-            <div>Jenkins CircleCI GithubActions Docker</div>
+            <CategoryDescription>
+              Jenkins CircleCI GithubActions Docker
+            </CategoryDescription>
           </CategorySection>
           <CategorySection>
             <CategoryTitle name="服务端" icon={server} />
-            <div>
+            <CategoryDescription>
               Koa Express Nestjs Nestjs-nextjs Wechaty-robot Redis Mongodb
-            </div>
+            </CategoryDescription>
           </CategorySection>
           <CategorySection>
             <CategoryTitle name="微前端" icon={micorfront} />
-            <div>Stenciljs SingleSPA Qiankun</div>
+            <CategoryDescription>
+              Stenciljs SingleSPA Qiankun
+            </CategoryDescription>
           </CategorySection>
           <CategorySection>
             <CategoryTitle name="编程语言" icon={code} />
-            <div>Typescript Ruby Golang</div>
+            <CategoryDescription>Typescript Ruby Golang</CategoryDescription>
           </CategorySection>
           <CategorySection>
             <CategoryTitle name="工具及插件" icon={tool} />
-            <div>Lex项目 Rap2定制专注模式 Pont</div>
+            <CategoryDescription>
+              Lex项目 Rap2定制专注模式 Pont
+            </CategoryDescription>
           </CategorySection>
           <CategorySection>
             <CategoryTitle name="移动应用" icon={app} />
-            <div>Flutter Flutter amap_maps_flutter 混合开发</div>
+            <CategoryDescription>
+              Flutter Flutter amap_maps_flutter 混合开发
+            </CategoryDescription>
           </CategorySection>
         </div>
       </Screen>

@@ -27,6 +27,7 @@ const Description = styled.p`
   margin: 0;
   color: #4a4a4a;
   margin-bottom: 60px;
+  line-height: 1.5em;
 `
 
 export default () => {
@@ -38,7 +39,7 @@ export default () => {
         <Name>郭永杰(briefguo)</Name>
         <Title>前端开发</Title>
         <Description>
-          🧑🏻‍💻最近专注于小程序开发，再就是为 Pont 贡献代码
+          🧑🏻‍💻最近专注于小程序开发、为 Pont 贡献代码
         </Description>
       </Screen>
       <ParticleBackground></ParticleBackground>

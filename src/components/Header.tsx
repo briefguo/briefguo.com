@@ -52,17 +52,15 @@ const Navbar = styled.ul`
   margin: 0 -10px;
   width: 996px;
   margin: 0 auto;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
 `
 
 const HeaderContainer = styled(Flex)`
   height: 64px;
   @media (max-width: 768px) {
     .navbar {
-      display: none;
+      display: flex;
+      justify-content: center;
+      padding-left: 0;
     }
   }
 `
